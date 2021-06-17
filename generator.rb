@@ -21,7 +21,7 @@ resource_id = 0
   resource = resources[resource_id]
 
   situations.each do |sit, time|
-    next if sit == 'reworking' && rand(0..1)
+    next if sit == 'reworking' && rand(0..1).to_i
 
     duration = rand((time - (time * 0.20))..(time + (time * 0.20))).to_i.minutes
     start_time = end_time != nil ? end_time : start_time
@@ -29,7 +29,7 @@ resource_id = 0
 
     situation = sit
 
-    resource = resources[rand(0..(resources.size-1))] if rand(0..1)
+    resource = resources[rand(0..(resources.size-1))] if rand(0..1).to_i
 
     str += "#{count};#{name};#{situation};#{start_time};#{end_time};#{duration};#{resource}\n"
   end
